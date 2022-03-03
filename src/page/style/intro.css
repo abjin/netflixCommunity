@@ -1,0 +1,42 @@
+.Intro {
+  width: 100vw;
+  height: 100vh;
+}
+.left {
+  width: 70%;
+  height: 100%;
+  float: left;
+  background-color: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.right {
+  width: 30%;
+  height: 100%;
+  float: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.right > div {
+  width: 90%;
+  height: 50px;
+  box-sizing: border-box;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.signin-btn {
+  background-color: #c62917;
+  color: aliceblue;
+}

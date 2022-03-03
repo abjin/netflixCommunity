@@ -1,0 +1,40 @@
+.PostDoor {
+  border: 1px solid #ccc;
+  width: 295px;
+  margin-bottom: 5px;
+  /* height: 152px; */
+}
+
+.PostDoor .post,
+.PostDoor .name {
+  width: 100%;
+  height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.PostDoor .name {
+  margin: 0px;
+  height: 40px;
+  border-top: none;
+  color: #c62917;
+}
+
+.PostDoor .post {
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.content {
+  flex-grow: 5;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.when {
+  flex-grow: 1;
+  color: #888;
+}

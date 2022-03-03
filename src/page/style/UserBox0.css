@@ -1,0 +1,35 @@
+.UserBox0 {
+  width: 173px;
+  height: 217px;
+  background-color: #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 3px;
+}
+
+.UserBox0 > div {
+  width: 85%;
+  height: 30px;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px;
+}
+
+.login {
+  margin-bottom: 5px;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.signup {
+  margin-top: 5px;
+  background: #c62917;
+  color: white;
+  cursor: pointer;
+  border-radius: 3px;
+}

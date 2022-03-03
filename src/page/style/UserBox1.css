@@ -1,0 +1,36 @@
+.UserBox1 {
+  width: 173px;
+  height: 217px;
+  background-color: #dddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 3px;
+}
+.photo {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.name {
+  margin-top: 10px;
+  font-weight: 700;
+}
+
+.logout {
+  margin-top: 20px;
+}
+
+.logout > button {
+  width: 100px;
+  background: #dddd;
+  border: 2px solid #bbb;
+  padding: 5px;
+  border-radius: 3px;
+  cursor: pointer;
+}
