@@ -1,21 +1,34 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../page/style/PostDoor.css";
 
-function PostDoor({ title, num }) {
-  const { page } = useParams();
-  const boardId = 10 * page + num;
+function PostDoor({ title, boardId }) {
+  const [list, setList] = useState();
+
   useEffect(() => {
     axios
-      .get("http://localhost:3001/home")
+      .get("http://localhost:3001/main", {
+        params: { boardId: boardId },
+      })
       .then((res) => {
-        console.log(res.data);
+        setList(rendering(res.data.list));
       })
       .catch((err) => {
-        console.log("에러 발생", err);
+        console.log("에러 발생bbbbb", err);
       });
-  }, [boardId]);
+  }, []);
+
+  const rendering = (arr) => {
+    return arr.map((item, key) => {
+      return (
+        <div key={key} className="post">
+          <div className="content">{item.title}</div>
+          <div className="when">{item.date}</div>
+        </div>
+      );
+    });
+  };
 
   return (
     <div className="PostDoor">
@@ -23,8 +36,16 @@ function PostDoor({ title, num }) {
         {title}
         {boardId}
       </div>
-      <div className="post">
-        <div className="content">post1 포스트1</div>
+      {list}
+    </div>
+  );
+}
+
+export default PostDoor;
+
+{
+  /* <div className="post">
+        <div className="content">list</div>
         <div className="when">방금</div>
       </div>
       <div className="post">
@@ -38,9 +59,5 @@ function PostDoor({ title, num }) {
       <div className="post">
         <div className="content">post4 포스트4</div>
         <div className="when">방금</div>
-      </div>
-    </div>
-  );
+      </div> */
 }
-
-export default PostDoor;

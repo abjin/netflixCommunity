@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 import PostDoor from "./PostDoor";
 function PostBox({ list }) {
-  console.log(list.list);
+  const { page } = useParams();
   const _list = list.list.map((data, num) => (
-    <PostDoor title={data} num={num} key={num}></PostDoor>
+    <PostDoor
+      title={data}
+      boardId={10 * page + num}
+      key={10 * page + num}
+    ></PostDoor>
   ));
   return <>{_list}</>;
 }

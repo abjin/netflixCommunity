@@ -6,7 +6,7 @@ app.use(bodyparser.urlencoded({ extended: true }));
 app.use(cors());
 const home = require("./server/home.js");
 
-app.use("/home", home);
+app.use("/main", home);
 
 app.listen(3001, () => {
   console.log("listening on ", 3001, "port.");
