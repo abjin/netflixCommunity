@@ -1,6 +1,5 @@
-# Getting Started with Create React App
+# Getting Start
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
@@ -8,15 +7,15 @@ In the project directory, you can run:
 
 ### `npm run start`
 
-Runs the server and client.
+Runs the react app and client.
 
 ### `npm run starts:client`
 
-Runs the react app.
+Run the react app.
 
 ### `npm run starts:server`
 
-Runs server.
+Run server.
 
 ### `yarn build`
 
