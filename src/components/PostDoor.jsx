@@ -1,10 +1,18 @@
+import axios from "axios";
 import React from "react";
+import { useParams } from "react-router-dom";
 import "../page/style/PostDoor.css";
 
-function PostDoor() {
+function PostDoor({ title, num }) {
+  const { page } = useParams();
+  const boardId = 10 * page + num;
+  axios.get("/home", {});
   return (
     <div className="PostDoor">
-      <div className="name">자유개시판</div>
+      <div className="name">
+        {title}
+        {boardId}
+      </div>
       <div className="post">
         <div className="content">post1 포스트1</div>
         <div className="when">방금</div>

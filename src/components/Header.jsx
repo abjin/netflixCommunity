@@ -4,7 +4,7 @@ import "../page/style/Header.css";
 
 function Header(props) {
   const navigate = useNavigate();
-  const { id } = useParams();
+  const { page } = useParams();
   const [item, setItem] = useState([
     { name: "홈", id: 0 },
     { name: "시리즈", id: 1 },
@@ -13,7 +13,7 @@ function Header(props) {
   ]);
 
   const list = item.map((data, index) => {
-    if (data.id == id) {
+    if (data.id == page) {
       return (
         <div key={index} className="selected">
           {data.name}
