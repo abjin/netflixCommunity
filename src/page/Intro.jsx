@@ -23,11 +23,11 @@ function Intro() {
         </p>
       </div>
       <div className="right">
-        <logo className="logo">logo</logo>
+        <div className="logo">logo</div>
         <div className="login-btn" onClick={gologin}>
           로그인
         </div>
-        <div className="signin-btn" onClick={gosignin}>
+        <div className="signup-btn" onClick={gosignin}>
           회원가입
         </div>
       </div>

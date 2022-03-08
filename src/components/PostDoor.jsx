@@ -1,12 +1,22 @@
 import axios from "axios";
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "../page/style/PostDoor.css";
 
 function PostDoor({ title, num }) {
   const { page } = useParams();
   const boardId = 10 * page + num;
-  axios.get("/home", {});
+  useEffect(() => {
+    axios
+      .get("http://localhost:3001/home")
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log("에러 발생", err);
+      });
+  }, [boardId]);
+
   return (
     <div className="PostDoor">
       <div className="name">

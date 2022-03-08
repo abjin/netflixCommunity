@@ -22,7 +22,7 @@
   flex-direction: column;
 }
 
-.right > div {
+.right .login-btn, .right .signup-btn {
   width: 90%;
   height: 50px;
   box-sizing: border-box;
@@ -36,7 +36,7 @@
   cursor: pointer;
 }
 
-.signin-btn {
+.signup-btn {
   background-color: #c62917;
   color: aliceblue;
 }
