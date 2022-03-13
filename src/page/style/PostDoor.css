@@ -39,4 +39,6 @@
 .when {
   flex-grow: 1;
   color: #888;
+  text-align: end;
+  font-size: 13px;
 }

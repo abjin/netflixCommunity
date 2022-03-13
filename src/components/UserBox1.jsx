@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "../page/style/UserBox1.css";
 function UserBox1() {
   return (

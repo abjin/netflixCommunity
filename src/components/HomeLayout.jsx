@@ -1,8 +1,5 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React from "react";
 import "../page/style/HomeLayout.css";
-import PostDoor from "./PostDoor";
 import UserBox from "./UserBox";
 import RightBox from "./RightBox";
 import MainBox from "./MainBox";

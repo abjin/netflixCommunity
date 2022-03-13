@@ -12,11 +12,11 @@
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-}
-
-.header-left > .logo {
   cursor: pointer;
 }
+
+/* .header-left > .logo {
+} */
 
 .header-left > .name {
   color: #c62917;
@@ -55,7 +55,7 @@
   cursor: pointer;
 }
 
-.selected {
+.item0 {
   color: #c62917;
   border-bottom: 3px solid #c62917;
   /* border: 1px solid black; */

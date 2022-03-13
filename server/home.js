@@ -7,22 +7,25 @@ router.get("", (req, res) => {
   res.json({
     list: [
       {
-        title: `${id} test1`,
+        title: `test1    ${id} `,
         content: `${id}test1 content`,
         date: "3/8",
         board_id: "0",
+        id: 0,
       },
       {
-        title: `${id} test2`,
+        title: `test2    ${id} `,
         content: `${id}test1 content`,
         date: "3/8",
         board_id: "0",
+        id: 1,
       },
       {
-        title: `${id} test3`,
+        title: `test3    ${id} `,
         content: `${id}test1 content`,
         date: "3/8",
         board_id: "0",
+        id: 2,
       },
       // {
       //   title: `${id} test4`,

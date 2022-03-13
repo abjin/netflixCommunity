@@ -1,10 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../page/style/PostDoor.css";
 
 function PostDoor({ title, boardId }) {
   const [list, setList] = useState();
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -22,7 +23,11 @@ function PostDoor({ title, boardId }) {
   const rendering = (arr) => {
     return arr.map((item, key) => {
       return (
-        <div key={key} className="post">
+        <div
+          key={key}
+          className="post"
+          onClick={() => navigate(`${boardId}/${item.id}`)}
+        >
           <div className="content">{item.title}</div>
           <div className="when">{item.date}</div>
         </div>
@@ -32,7 +37,7 @@ function PostDoor({ title, boardId }) {
 
   return (
     <div className="PostDoor">
-      <div className="name">
+      <div className="name" onClick={() => navigate(`${boardId}`)}>
         {title}
         {boardId}
       </div>
@@ -42,22 +47,3 @@ function PostDoor({ title, boardId }) {
 }
 
 export default PostDoor;
-
-{
-  /* <div className="post">
-        <div className="content">list</div>
-        <div className="when">방금</div>
-      </div>
-      <div className="post">
-        <div className="content">post2 포스트2</div>
-        <div className="when">방금</div>
-      </div>
-      <div className="post">
-        <div className="content">post3 포스트3</div>
-        <div className="when">방금</div>
-      </div>
-      <div className="post">
-        <div className="content">post4 포스트4</div>
-        <div className="when">방금</div>
-      </div> */
-}

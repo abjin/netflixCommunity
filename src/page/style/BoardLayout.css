@@ -1,0 +1,46 @@
+div {
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.title {
+  width: 100%;
+  height: 60px;
+  margin-bottom: 5px;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  font-weight: 800;
+  font-size: 30px;
+  padding-left: 10px;
+}
+
+.BoardLayout {
+  width: 1125px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+}
+
+.BoardBox {
+  width: 780px;
+  float: left;
+  margin-right: 20px;
+  border: 1px solid black;
+}
+.rightBox {
+  width: 323px;
+  float: left;
+}
+
+.title {
+  width: 100%;
+  height: 60px;
+  margin-bottom: 5px;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  font-weight: 800;
+  font-size: 30px;
+  padding-left: 10px;
+}
