@@ -7,6 +7,7 @@ import Home from "../page/Home";
 import BoardLayout from "../components/BoardLayout";
 import HomeLayout from "../components/HomeLayout";
 import BoardBox from "../components/BoardBox";
+import PostDetail from "../components/PostDetail";
 function Router() {
   return (
     <BrowserRouter>
@@ -18,7 +19,7 @@ function Router() {
           <Route path=":page" element={<HomeLayout />} />
           <Route path=":page" element={<BoardLayout />}>
             <Route path=":board" element={<BoardBox></BoardBox>} />
-            <Route path=":board/:post" element={<div>상세 page 입니다.</div>} />
+            <Route path=":board/:post" element={<PostDetail></PostDetail>} />
           </Route>
           <Route
             path=":page/:board/:post"

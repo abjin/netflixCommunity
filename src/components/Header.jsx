@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import "../page/style/Header.css";
-
+import logo from "../asset/logo.png";
 function Header() {
   const navigate = useNavigate();
   const { page } = useParams();
@@ -35,7 +35,7 @@ function Header() {
           navigate("/home/0");
         }}
       >
-        <div className="logo">logo</div>
+        <img className="logo" src={logo}></img>
         <div className="name">
           Nerflix <br /> Community
         </div>

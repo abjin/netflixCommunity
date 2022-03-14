@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./style/Login.css";
+import logo from "../asset/logo.png";
 
 function Signup() {
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ function Signup() {
     <div className="Login">
       <div className="container">
         <div className="first-box">
-          <div className="logo">logo</div>
+          <img className="logo" src={logo}></img>
           <div className="desc">지금 netflix community를 시작하세요! </div>
         </div>
         <div className="input-box">

@@ -26,7 +26,7 @@ div {
   width: 780px;
   float: left;
   margin-right: 20px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 .rightBox {
   width: 323px;
