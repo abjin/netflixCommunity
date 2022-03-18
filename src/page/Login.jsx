@@ -21,14 +21,20 @@ function Login() {
       password: password,
     };
     axios
-      .post("http://localhost/30001/login", data)
+      .post("http://localhost:3001/user/login", data)
       .then((res) => {
-        console.log(res);
+        localStorage.setItem("token", res.data.token);
+        console.log("client : login success");
         navigate("/home/0");
       })
       .catch((err) => {
-        console.log(err);
-        navigate("/home/0");
+        if (err.response.status === 401) {
+          console.log("로그인 실패");
+        }
+        if (err.response.status === 409) {
+          window.alert("로그인 정보가 유효하지 않습니다.");
+          console.log(err.response.data);
+        }
       });
   };
   return (

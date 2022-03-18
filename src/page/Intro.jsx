@@ -22,7 +22,7 @@ function Intro() {
           있습니다. <br /> 지금 바로 가입하여 관한 정보를 얻고 작품에 관하여
           소통하세요.
         </p>
-        <div>Join us</div>
+        <div onClick={() => navigate("/home/0")}>Join us</div>
       </div>
       <div className="right">
         <img className="logo" src={logo} />

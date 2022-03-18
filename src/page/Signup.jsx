@@ -21,14 +21,17 @@ function Signup() {
       password: password,
     };
     axios
-      .post("http://localhost/30001/login", data)
+      .post("http://localhost:3001/user/signup", data)
       .then((res) => {
-        console.log(res);
-        navigate("/home/0");
+        if (res.status === 409) {
+          window.alert("가입 되어 있는 email 입니다.");
+        } else if (res.status === 200) {
+          localStorage.setItem("token", res.data.token);
+          navigate("/home/0");
+        }
       })
       .catch((err) => {
         console.log(err);
-        navigate("/home/0");
       });
   };
   return (
