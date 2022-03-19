@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./style/Login.css";
 import logo from "../asset/logo.png";
+import { setToken } from "../api/user.js";
 
 function Login() {
   const navigate = useNavigate();
@@ -23,17 +24,20 @@ function Login() {
     axios
       .post("http://localhost:3001/user/login", data)
       .then((res) => {
-        localStorage.setItem("token", res.data.token);
-        console.log("client : login success");
+        // console.log(res.data.acessToken);
+        setToken(res.data.acessToken);
+        // localStorage.setItem("acessToken", res.data.acessToken);
+        // localStorage.setItem("refreshToken", res.data.refreshToken);
         navigate("/home/0");
       })
       .catch((err) => {
-        if (err.response.status === 401) {
-          console.log("로그인 실패");
-        }
-        if (err.response.status === 409) {
-          window.alert("로그인 정보가 유효하지 않습니다.");
-          console.log(err.response.data);
+        if (err.response.status === 404) {
+          window.alert("가입 정보 없음");
+        } else if (err.response.status === 409) {
+          window.alert("비밀 번호를 다시 입력 해주세요.");
+          // console.log(err.response.data);
+        } else {
+          window.alert("다시 시도해 주세요.");
         }
       });
   };

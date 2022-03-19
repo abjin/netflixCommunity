@@ -3,7 +3,13 @@ const bodyparser = require("body-parser");
 const cors = require("cors");
 const app = express();
 app.use(bodyparser.urlencoded({ extended: true }));
-app.use(cors());
+app.use(
+  cors({
+    origin: true,
+    credentials: true, // 크로스 도메인 허용
+    methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD"],
+  })
+);
 const home = require("./server/home.js");
 const user = require("./server/user.js");
 
