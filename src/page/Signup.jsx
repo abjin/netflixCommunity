@@ -23,15 +23,16 @@ function Signup() {
     axios
       .post("http://localhost:3001/user/signup", data)
       .then((res) => {
-        if (res.status === 409) {
-          window.alert("가입 되어 있는 email 입니다.");
-        } else if (res.status === 200) {
-          localStorage.setItem("token", res.data.token);
-          navigate("/home/0");
-        }
+        console.log(res.data.message);
+        window.alert("회원가입에 성공했습니다. 로그인 페이지로 이동 합니다.");
+        navigate("/home/0");
       })
       .catch((err) => {
-        console.log(err);
+        if (err.response.status === 409) {
+          window.alert("가입 되어 있는 email 입니다.");
+        } else {
+          window.alert("서버오류 다시 시도해 주세요");
+        }
       });
   };
   return (

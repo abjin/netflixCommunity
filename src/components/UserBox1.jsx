@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../page/style/UserBox1.css";
 import { getUser, logout, getToken } from "../api/user";
+import logo from "../asset/profile.png";
 function UserBox1({ onLogout }) {
   const [email, setEmail] = useState("");
   getUser()
@@ -12,7 +13,7 @@ function UserBox1({ onLogout }) {
   return (
     <div className="UserBox1">
       <div className="proflie">
-        <div className="photo">사진</div>
+        <img src={logo} className="photo"></img>
         <div className="name">{email}</div>
       </div>
       <div className="logout">
