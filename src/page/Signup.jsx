@@ -25,7 +25,7 @@ function Signup() {
       .then((res) => {
         console.log(res.data.message);
         window.alert("회원가입에 성공했습니다. 로그인 페이지로 이동 합니다.");
-        navigate("/home/0");
+        navigate("/login");
       })
       .catch((err) => {
         if (err.response.status === 409) {

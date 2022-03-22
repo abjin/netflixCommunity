@@ -96,14 +96,15 @@
 
 .detail-etc {
   /* height: 25px; */
-  width: 16%;
+  /* width: 20%; */
   display: flex;
   font-size: 14px;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 .detail-like {
   color: #c62917;
+  margin-right: 10px;
 }
 
 .detail-comment {

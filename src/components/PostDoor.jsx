@@ -1,26 +1,29 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "../page/style/PostDoor.css";
 
 function PostDoor({ title, boardId }) {
   const [list, setList] = useState();
   const navigate = useNavigate();
+  const { page } = useParams();
 
   useEffect(() => {
     axios
       .get("http://localhost:3001/main", {
-        params: { boardId: boardId },
+        params: { boardId: boardId, page: page },
       })
       .then((res) => {
+        // console.log(res.data.list[0]);
         setList(rendering(res.data.list));
       })
       .catch((err) => {
-        console.log("에러 발생bbbbb", err);
+        console.log("에러 발생(postDoor axios)", err);
       });
   }, []);
 
   const rendering = (arr) => {
+    if (arr.length == 0) return false;
     return arr.map((item, key) => {
       return (
         <div
@@ -39,9 +42,9 @@ function PostDoor({ title, boardId }) {
     <div className="PostDoor">
       <div className="name" onClick={() => navigate(`${boardId}`)}>
         {title}
-        {boardId}
+        {/* {boardId} */}
       </div>
-      {list}
+      {list != false ? list : <div className="noPost">no post</div>}
     </div>
   );
 }

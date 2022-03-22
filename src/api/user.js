@@ -26,7 +26,7 @@ export const getUser = async () => {
     axios
       .get("http://localhost:3001/user", { withCredentials: true })
       .then((res) => {
-        resolve(res.data);
+        resolve(res.data.user);
       })
       .catch((err) => {
         console.log(err);
@@ -34,5 +34,5 @@ export const getUser = async () => {
       });
   });
 
-  return await result;
+  return await result; // user 정보 : email
 };

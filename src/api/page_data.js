@@ -39,4 +39,9 @@ export const page_data = [
       "공포",
     ],
   },
+  {
+    id: 3,
+    board: "new",
+    list: ["NEW! 요즘 대세 콘텐츠"],
+  },
 ];

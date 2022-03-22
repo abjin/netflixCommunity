@@ -7,17 +7,19 @@ app.use(
   cors({
     origin: true,
     credentials: true, // 크로스 도메인 허용
-    methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD"],
+    // methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD"],
   })
 );
 const home = require("./server/home.js");
 const user = require("./server/user.js");
+const post = require("./server/post.js");
 
 //dot env 환경 변수
 require("dotenv").config();
 
 app.use("/main", home);
 app.use("/user", user);
+app.use("/post", post);
 
 app.listen(3001, () => {
   console.log("listening on ", 3001, "port.");

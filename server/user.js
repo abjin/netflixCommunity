@@ -28,8 +28,9 @@ router.post("/signup", (req, res) => {
   const { email, password } = req.body;
   chSignup(email, password)
     .then((result) => {
-      sign(email, password);
-      res.status(200).json({ message: "회원가입성공" });
+      sign(email, password)
+        .then(res.status(200).json({ message: "회원가입성공" }))
+        .catch(res.status(500).json({ message: "db err" }));
     })
     .catch((err) => res.status(err).json({ message: "가입 실패" }));
 });

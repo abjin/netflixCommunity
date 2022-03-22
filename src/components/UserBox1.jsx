@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../page/style/UserBox1.css";
 import { getUser, logout, getToken } from "../api/user";
 import logo from "../asset/profile.png";
 function UserBox1({ onLogout }) {
   const [email, setEmail] = useState("");
-  getUser()
-    .then((result) => {
-      console.log("get user then function", result.user.email);
-      setEmail(result.user.email);
-    })
-    .catch((err) => console.log("에러", err));
+  useEffect(() => {
+    getUser()
+      .then((user) => {
+        console.log("get user then function", user.email);
+        setEmail(user.email);
+      })
+      .catch((err) => console.log("에러", err));
+  }, []);
+
   return (
     <div className="UserBox1">
       <div className="proflie">

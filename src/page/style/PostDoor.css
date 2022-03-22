@@ -42,3 +42,13 @@
   text-align: end;
   font-size: 13px;
 }
+.noPost {
+  height: 152px;
+  /* text-align: center; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  background-color: #ccc;
+  opacity: 0.05;
+}

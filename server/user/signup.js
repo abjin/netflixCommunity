@@ -33,10 +33,7 @@ const chSignup = async (email, password) => {
 };
 
 const sign = (email, password) => {
-  collection.insertOne({ email: email, password: password }, (err, result) => {
-    // if (err) console.log(err);
-    // if (result) console.log(result);
-  });
+  return collection.insertOne({ email: email, password: password });
 };
 
 module.exports = { chSignup, sign };
