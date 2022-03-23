@@ -71,7 +71,7 @@ function Header() {
         <div
           className="item"
           onClick={(e) => {
-            navigate("3/0");
+            navigate("3/30");
             onClickHandler(e);
           }}
         >

@@ -14,11 +14,6 @@ function CreateBox({ cancel }) {
   //
   const onSubmitHandler = async (title, content, page, boardid) => {
     const data = await inputform(title, content, page, boardid);
-    console.log(data, typeof data);
-
-    const test = {
-      name: "kim",
-    };
 
     await axios
       .post("http://localhost:3001/post", data, {

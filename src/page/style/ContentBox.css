@@ -1,6 +1,6 @@
 .post {
   width: 100%;
-  height: 93px;
+  height: 80px;
   border-bottom: 1px solid gray;
   padding-left: 10px;
   padding-right: 10px;
@@ -9,6 +9,17 @@
 
 .post-title {
   font-weight: 600;
+  width: 758px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.post-content {
+  width: 758px;
+  max-height: 19px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .post-etc {
   display: flex;

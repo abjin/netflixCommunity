@@ -36,16 +36,26 @@ router.get("/", (req, res) => {
   });
 });
 
-router.post("/", (req, res) => {
-  console.log("요청 성공");
-  console.log(req.body.writer);
+router.post("/", async (req, res) => {
+  const total_post = await count
+    .findOne({ name: "total_post" })
+    .then((result) => {
+      return result.total_post;
+    });
+
+  console.log(total_post);
 
   const data = req.body;
-  post.insertOne(data, (err, result) => {
+  await post.insertOne({ ...data, id: total_post + 1 }, (err, result) => {
     if (err) console.log(err);
-    console.log(result);
+    // console.log(result);
     res.status(200).json({ message: "mongo db insert success" });
   });
+
+  count
+    .updateOne({ name: "total_post" }, { $inc: { total_post: 1 } })
+    .then()
+    .catch((err) => console.log(err));
 });
 
 module.exports = router;

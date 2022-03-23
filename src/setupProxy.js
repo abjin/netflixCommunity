@@ -19,4 +19,10 @@ module.exports = function (app) {
       changeOrigin: true,
     })
   );
+  app.use(
+    createProxyMiddleware("/board", {
+      target: "http://localhost:3001/",
+      changeOrigin: true,
+    })
+  );
 };
