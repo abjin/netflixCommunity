@@ -9,7 +9,7 @@ function ContentBox({ data }) {
     navigate(`${data.id}`);
   };
   return (
-    <div className="post" onClick={onClickHandler}>
+    <div className="Post" onClick={onClickHandler}>
       <div className="post-title">{data.title}</div>
       <div className="post-content">{data.content}</div>
       <div className="post-etc">
