@@ -4,6 +4,7 @@ import logo from "../asset/profile.png";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { date } from "../api/date";
+import CreateComment from "./CreateComment";
 
 function PostDetail() {
   const { post } = useParams();
@@ -63,15 +64,7 @@ function PostDetail() {
         <div className="comment-bottom">{date()}</div>
       </div>
       {/* comment end */}
-      <div className="comment-create">
-        <input
-          type="text"
-          name="comment"
-          className="comment-input"
-          placeholder="댓글을 입력하세요."
-        />
-        <div className="comment-submit">제출</div>
-      </div>
+      <CreateComment postId={postData.id}></CreateComment>
     </div>
   );
 }

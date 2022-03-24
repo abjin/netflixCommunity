@@ -21,10 +21,6 @@ function Router() {
             <Route path=":board" element={<BoardBox></BoardBox>} />
             <Route path=":board/:post" element={<PostDetail></PostDetail>} />
           </Route>
-          <Route
-            path=":page/:board/:post"
-            element={<div>상세 page 입니다.</div>}
-          />
         </Route>
         <Route path="*" element={<div>not found</div>} />
       </Routes>

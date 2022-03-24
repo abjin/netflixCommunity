@@ -14,6 +14,7 @@ const inputform = async (title, content, page, boardid) => {
     user: _user,
     likes: 0,
     comments: new Array(),
+    total_comment: 0,
     date: _date,
   };
   return document;

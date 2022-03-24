@@ -9,6 +9,7 @@ router.use(express.json());
 
 // //mongodb
 const { MongoClient, ServerApiVersion } = require("mongodb");
+const { default: axios } = require("axios");
 const uri =
   "mongodb+srv://abjin:abjin@cluster0.wrojn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 const client = new MongoClient(uri, {
@@ -58,4 +59,27 @@ router.post("/", async (req, res) => {
     .catch((err) => console.log(err));
 });
 
+router.post("/comment", async (req, res) => {
+  const { comment, postId } = req.body;
+
+  const result = await post.findOne({ id: postId }).then((result) => {
+    return result.total_comment;
+  });
+
+  console.log(result);
+
+  post
+    .update(
+      { id: postId },
+      { $push: { comments: comment }, $inc: { total_comment: 1 } }
+    )
+    .then((result) => {
+      console.log(result);
+      res.status(200).json({ message: "mongodb : update comment success" });
+    })
+    .catch((err) => console.log("몽고 디비 :: ", err));
+
+  // post.updateOne({id : postId}, {$inc : {total_comment : 1}})
+  //   .catch(err=>console.log("total_comment update 에러", err))
+});
 module.exports = router;
