@@ -1,32 +1,42 @@
 import React, { useEffect, useState } from "react";
 import "../page/style/PostDetail.css";
 import logo from "../asset/profile.png";
-import { useParams } from "react-router-dom";
+import { resolvePath, useParams } from "react-router-dom";
 import axios from "axios";
-import { date } from "../api/date";
 import CreateComment from "./CreateComment";
-
+import Comment from "./Comment";
 function PostDetail() {
   const { post } = useParams();
   const [postData, setPostData] = useState("");
-  const [like, setLike] = useState(0);
-  const [comment, setComment] = useState(0);
+  const [commentData, setCommentData] = useState();
+  const [create, setCreate] = useState(0);
+
   useEffect(() => {
+    load_data();
+  }, []);
+
+  const load_data = () => {
     axios
       .get("http://localhost:3001/post", {
         params: { post: post },
       })
       .then((res) => {
-        // console.log(res.data);
         setPostData(res.data.data);
-        console.log(postData.comments.length);
-        setLike(postData.likes);
-        setComment(postData.comments.length);
+        return res.data.data.comments;
       })
       .catch((err) => {
         console.log(err.response);
+      })
+      .then((data) => {
+        return data.map((item, key) => {
+          return <Comment key={key} data={item}></Comment>;
+        });
+      })
+      .then((list) => {
+        console.log(list);
+        setCommentData(list);
       });
-  }, []);
+  };
 
   return (
     <div className="PostDetail">
@@ -42,29 +52,26 @@ function PostDetail() {
           <div className="detail-title">{postData.title}</div>
           <div className="detail-body">{postData.content}</div>
           <div className="detail-etc">
-            <div className="detail-like">like {like}</div>
-            <div className="detail-comment">comment {comment}</div>
+            <div className="detail-like">like {postData.likes}</div>
+            <div className="detail-comment">
+              comment {postData.total_comment}
+            </div>
           </div>
         </div>
         <div className="like-btn">공감</div>
       </div>
-      {/* comment */}
-      <div className="post-comment">
-        <div className="comment-top">
-          <img className="comment-img" src={logo} />
-          <div className="comment-writer">admin</div>
-        </div>
-        <div className="commnet-middle">
-          좋아요 눌러서 당사자가 보게 해주세요 부탁드립니다 Lorem ipsum dolor
-          sit, amet consectetur adipisicing elit. Doloremque sint quos
-          distinctio labore similique expedita tempora, inventore molestias
-          dolorum facere cumque ad odit, iste optio et perspiciatis modi, fuga
-          cum?
-        </div>
-        <div className="comment-bottom">{date()}</div>
-      </div>
-      {/* comment end */}
-      <CreateComment postId={postData.id}></CreateComment>
+
+      {commentData}
+
+      <CreateComment
+        click={() => {
+          load_data();
+          console.log("click 클릭");
+        }}
+        postId={postData.id}
+      ></CreateComment>
+
+      {create}
     </div>
   );
 }

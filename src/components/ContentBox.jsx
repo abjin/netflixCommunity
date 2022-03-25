@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 
 function ContentBox({ data }) {
   const navigate = useNavigate();
-  console.log("content box props", data);
   const onClickHandler = () => {
     navigate(`${data.id}`);
   };

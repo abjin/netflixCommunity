@@ -1,13 +1,22 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { date } from "../api/date";
+import { getUser } from "../api/user";
 
-function CreateComment({ postId }) {
+function CreateComment({ click, postId }) {
   const [comment, setComment] = useState();
 
-  const onClickHandler = () => {
-    console.log(postId);
+  const onClickHandler = async () => {
+    const { email: writer } = await getUser();
+    const when = date();
+    console.log("이메일 ::", writer, when);
     axios
-      .post("http://localhost:3001/post/comment", { comment, postId })
+      .post("http://localhost:3001/post/comment", {
+        writer,
+        comment,
+        postId,
+        date: when,
+      })
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
   };
@@ -25,7 +34,13 @@ function CreateComment({ postId }) {
         placeholder="댓글을 입력하세요."
         onChange={(e) => onChangeHandler(e)}
       />
-      <div className="comment-submit" onClick={onClickHandler}>
+      <div
+        className="comment-submit"
+        onClick={() => {
+          onClickHandler();
+          click();
+        }}
+      >
         제출
       </div>
     </div>

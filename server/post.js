@@ -60,7 +60,7 @@ router.post("/", async (req, res) => {
 });
 
 router.post("/comment", async (req, res) => {
-  const { comment, postId } = req.body;
+  const { comment, writer, date, postId } = req.body;
 
   const result = await post.findOne({ id: postId }).then((result) => {
     return result.total_comment;
@@ -69,9 +69,12 @@ router.post("/comment", async (req, res) => {
   console.log(result);
 
   post
-    .update(
+    .updateMany(
       { id: postId },
-      { $push: { comments: comment }, $inc: { total_comment: 1 } }
+      {
+        $push: { comments: { comment, writer, date, id: result } },
+        $inc: { total_comment: 1 },
+      }
     )
     .then((result) => {
       console.log(result);
