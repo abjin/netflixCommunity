@@ -62,23 +62,26 @@ router.post("/", async (req, res) => {
 router.post("/comment", async (req, res) => {
   const { comment, writer, date, postId } = req.body;
 
-  const result = await post.findOne({ id: postId }).then((result) => {
+  const total_comment = await post.findOne({ id: postId }).then((result) => {
     return result.total_comment;
   });
 
-  console.log(result);
+  console.log("result ::", total_comment);
 
   post
     .updateMany(
       { id: postId },
       {
-        $push: { comments: { comment, writer, date, id: result } },
+        $push: { comments: { comment, writer, date, id: total_comment } },
         $inc: { total_comment: 1 },
       }
     )
     .then((result) => {
       console.log(result);
-      res.status(200).json({ message: "mongodb : update comment success" });
+      res.status(200).json({
+        message: "mongodb : update comment success",
+        comment_id: total_comment,
+      });
     })
     .catch((err) => console.log("몽고 디비 :: ", err));
 

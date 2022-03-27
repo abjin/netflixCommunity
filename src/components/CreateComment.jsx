@@ -9,15 +9,18 @@ function CreateComment({ click, postId }) {
   const onClickHandler = async () => {
     const { email: writer } = await getUser();
     const when = date();
-    console.log("이메일 ::", writer, when);
+    const data = {
+      writer,
+      comment,
+      postId,
+      date: when,
+    };
     axios
-      .post("http://localhost:3001/post/comment", {
-        writer,
-        comment,
-        postId,
-        date: when,
+      .post("http://localhost:3001/post/comment", data)
+      .then((res) => {
+        console.log("create data response : ", res.data.comment_id);
+        click(data, res.data.comment_id);
       })
-      .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
   };
 
@@ -38,7 +41,6 @@ function CreateComment({ click, postId }) {
         className="comment-submit"
         onClick={() => {
           onClickHandler();
-          click();
         }}
       >
         제출

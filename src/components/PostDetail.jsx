@@ -5,15 +5,24 @@ import { resolvePath, useParams } from "react-router-dom";
 import axios from "axios";
 import CreateComment from "./CreateComment";
 import Comment from "./Comment";
+import { getUser } from "../api/user";
+import { date } from "../api/date";
+
 function PostDetail() {
   const { post } = useParams();
   const [postData, setPostData] = useState("");
   const [commentData, setCommentData] = useState();
-  const [create, setCreate] = useState(0);
+  const [create, togleCreate] = useState(false);
 
   useEffect(() => {
+    console.log("useEffect 함수 실행됨 *******");
     load_data();
   }, []);
+
+  useEffect(() => {
+    console.log("useEffect 함수 실행됨 *******");
+    load_data();
+  }, [create]);
 
   const load_data = () => {
     axios
@@ -28,8 +37,8 @@ function PostDetail() {
         console.log(err.response);
       })
       .then((data) => {
-        return data.map((item, key) => {
-          return <Comment key={key} data={item}></Comment>;
+        return data.map((item) => {
+          return <Comment key={item.id} data={item}></Comment>;
         });
       })
       .then((list) => {
@@ -37,6 +46,8 @@ function PostDetail() {
         setCommentData(list);
       });
   };
+
+  const list = commentData;
 
   return (
     <div className="PostDetail">
@@ -61,12 +72,15 @@ function PostDetail() {
         <div className="like-btn">공감</div>
       </div>
 
-      {commentData}
+      {list}
 
       <CreateComment
-        click={() => {
-          load_data();
-          console.log("click 클릭");
+        click={async (new_data, comment_id) => {
+          setCommentData([
+            ...commentData,
+            <Comment key={comment_id} data={new_data}></Comment>,
+          ]);
+          console.log(commentData);
         }}
         postId={postData.id}
       ></CreateComment>
