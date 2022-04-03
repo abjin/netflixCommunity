@@ -88,4 +88,10 @@ router.post("/comment", async (req, res) => {
   // post.updateOne({id : postId}, {$inc : {total_comment : 1}})
   //   .catch(err=>console.log("total_comment update 에러", err))
 });
+
+router.get("/best", async (req, res) => {
+  console.log("right->best box get 요청");
+  const best = await post.find().sort({ id: -1 }).limit(2).toArray();
+  res.json({ best });
+});
 module.exports = router;

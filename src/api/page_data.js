@@ -45,3 +45,10 @@ export const page_data = [
     list: ["NEW! 요즘 대세 콘텐츠"],
   },
 ];
+
+export const board_name = (bordId) => {
+  const page = parseInt(bordId / 10);
+  const detail = bordId % 10;
+
+  return page_data[page].list[detail];
+};
