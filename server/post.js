@@ -29,11 +29,11 @@ router.get("/", (req, res) => {
   const post_id = req.query.post;
   post.findOne({ id: parseInt(post_id) }, (err, result) => {
     if (err) {
-      res.statusMessage = "server err in /post";
-      return res.status(500).end();
+      res.status(500).end();
+      console.log("post get err");
     }
 
-    return res.status(200).json({ data: result });
+    res.status(200).json({ data: result });
   });
 });
 
@@ -94,4 +94,20 @@ router.get("/best", async (req, res) => {
   const best = await post.find().sort({ id: -1 }).limit(2).toArray();
   res.json({ best });
 });
+
+router.post("/like", (req, res) => {
+  const { like_change, id: _id } = req.body;
+  post
+    .updateOne({ id: _id }, { $inc: { likes: like_change } })
+    .then((result) => {
+      console.log("post like mongodb success");
+      res.status(200).end();
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ message: "post like err in mongodb" });
+    });
+  console.log(like_change, _id);
+});
+
 module.exports = router;

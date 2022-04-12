@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import "../page/style/Header.css";
 import logo from "../asset/logo.png";
+import search_icon from "../asset/search_icon.png";
 function Header() {
   const navigate = useNavigate();
   const { page } = useParams();
@@ -79,8 +80,8 @@ function Header() {
         </div>
       </div>
       <div className="header-right">
-        <div></div>
-        <div></div>
+        {/* <div></div> */}
+        <img src={search_icon} onClick={() => navigate("/home/search")}></img>
       </div>
     </div>
   );

@@ -52,3 +52,9 @@ export const board_name = (bordId) => {
 
   return page_data[page].list[detail];
 };
+
+export const bordUrl = (bordId, id) => {
+  const page = parseInt(bordId / 10);
+  const detail = bordId % 10;
+  return "/home/" + page + "/" + detail + "/" + id;
+};

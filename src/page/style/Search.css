@@ -1,0 +1,55 @@
+.Search {
+    border: 1px solid black;
+    width: 100vw;
+    height: 100vh;
+}
+
+.Search .Container {
+    width: fit-content;
+    /* border: 1px solid black; */
+    padding: 10px;
+    margin-top: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Search .logo {
+    width: fit-content;
+    height: 92px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /* background-color: #ccc; */
+    padding-top: 30px;
+    font-size: 40px;
+    color: #c62917;
+}
+
+.Search .inputbox {
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    border-radius: 30px;
+}
+
+.Search input {
+    width: 447px;
+    height: 35px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    box-sizing: border-box;
+    display: inline-block;
+    margin: 5px;
+}
+
+
+.search-submit {
+    width: 48px;
+    height: 48px;
+    /* border: #c62917 solid 1px; */
+    display: inline-block;
+    vertical-align: top;
+    padding: 5px;
+    cursor: pointer;
+}

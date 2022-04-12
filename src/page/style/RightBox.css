@@ -24,6 +24,7 @@
   height: 95px;
   padding: 10px;
   border-top: 1px solid #d6d6d6;
+  cursor: pointer;
 }
 
 .best-post-top {

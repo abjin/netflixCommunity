@@ -8,6 +8,7 @@ import BoardLayout from "../components/BoardLayout";
 import HomeLayout from "../components/HomeLayout";
 import BoardBox from "../components/BoardBox";
 import PostDetail from "../components/PostDetail";
+import Search from "./Search";
 function Router() {
   return (
     <BrowserRouter>
@@ -15,7 +16,8 @@ function Router() {
         <Route path="/" element={<Intro />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/home" element={<Home />}>
+        <Route path="/home/*" element={<Home />}>
+          <Route path="search" element={<Search />} />
           <Route path=":page" element={<HomeLayout />} />
           <Route path=":page" element={<BoardLayout />}>
             <Route path=":board" element={<BoardBox></BoardBox>} />

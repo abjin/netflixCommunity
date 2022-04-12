@@ -1,28 +1,22 @@
 import React, { useEffect, useState } from "react";
 import "../page/style/PostDetail.css";
 import logo from "../asset/profile.png";
-import { resolvePath, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import CreateComment from "./CreateComment";
 import Comment from "./Comment";
-import { getUser } from "../api/user";
-import { date } from "../api/date";
 
 function PostDetail() {
   const { post } = useParams();
   const [postData, setPostData] = useState("");
   const [commentData, setCommentData] = useState();
-  const [create, togleCreate] = useState(false);
+  const [LikeChange, setLikeChange] = useState(1);
+  const [Like, setLike] = useState();
 
   useEffect(() => {
-    console.log("useEffect 함수 실행됨 *******");
     load_data();
-  }, []);
-
-  useEffect(() => {
-    console.log("useEffect 함수 실행됨 *******");
-    load_data();
-  }, [create]);
+    setLikeChange(1);
+  }, [post]);
 
   const load_data = () => {
     axios
@@ -31,6 +25,8 @@ function PostDetail() {
       })
       .then((res) => {
         setPostData(res.data.data);
+        setLike(res.data.data.likes);
+        console.log("Like", res.data.data.likes);
         return res.data.data.comments;
       })
       .catch((err) => {
@@ -45,6 +41,20 @@ function PostDetail() {
         console.log(list);
         setCommentData(list);
       });
+  };
+
+  const likeHandler = async () => {
+    console.log("click like btn");
+    if (LikeChange == 1) {
+      await axios.post("http://localhost:3001/post/like", {
+        like_change: LikeChange,
+        id: postData.id,
+      });
+      setLikeChange(0);
+      setLike(Like + 1);
+    } else {
+      alert("이미 좋아요를 누르셨습니다.");
+    }
   };
 
   const list = commentData;
@@ -63,29 +73,30 @@ function PostDetail() {
           <div className="detail-title">{postData.title}</div>
           <div className="detail-body">{postData.content}</div>
           <div className="detail-etc">
-            <div className="detail-like">like {postData.likes}</div>
+            <div className="detail-like">like {Like}</div>
             <div className="detail-comment">
               comment {postData.total_comment}
             </div>
           </div>
         </div>
-        <div className="like-btn">공감</div>
+        <div className="like-btn" onClick={likeHandler}>
+          공감
+        </div>
       </div>
 
       {list}
 
       <CreateComment
         click={async (new_data, comment_id) => {
-          setCommentData([
-            ...commentData,
-            <Comment key={comment_id} data={new_data}></Comment>,
-          ]);
+          load_data();
+          // setCommentData([
+          //   ...commentData,
+          //   <Comment key={comment_id} data={new_data}></Comment>,
+          // ]);
           console.log(commentData);
         }}
         postId={postData.id}
       ></CreateComment>
-
-      {create}
     </div>
   );
 }
