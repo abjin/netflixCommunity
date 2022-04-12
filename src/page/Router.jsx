@@ -9,6 +9,7 @@ import HomeLayout from "../components/HomeLayout";
 import BoardBox from "../components/BoardBox";
 import PostDetail from "../components/PostDetail";
 import Search from "./Search";
+import SearchDetail from "./SearchDetail";
 function Router() {
   return (
     <BrowserRouter>
@@ -16,8 +17,9 @@ function Router() {
         <Route path="/" element={<Intro />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/home/*" element={<Home />}>
+        <Route path="/home" element={<Home />}>
           <Route path="search" element={<Search />} />
+          <Route path="search/:input" element={<SearchDetail />} />
           <Route path=":page" element={<HomeLayout />} />
           <Route path=":page" element={<BoardLayout />}>
             <Route path=":board" element={<BoardBox></BoardBox>} />

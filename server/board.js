@@ -1,12 +1,6 @@
 const express = require("express");
 const router = express.Router();
 
-const bodyparser = require("body-parser");
-
-router.use(bodyparser.urlencoded({ extended: true }));
-
-router.use(express.json());
-
 // //mongodb
 const { MongoClient, ServerApiVersion } = require("mongodb");
 const uri =
