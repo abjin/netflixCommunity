@@ -7,7 +7,7 @@ In the project directory, you can run:
 
 ### `npm run start`
 
-Runs the react app and client.
+Runs the react app and server.
 
 ### `npm run starts:client`
 
