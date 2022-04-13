@@ -2,12 +2,15 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
+import ContentBox from "../components/ContentBox";
+import SearchInput from "../components/SearchInput";
+
+import "./style/SearchDetail.css";
+
 function SearchDetail() {
   const { input } = useParams();
-  const [Input, setInput] = useState("");
-
+  const [result, setResult] = useState([]);
   useEffect(() => {
-    setInput(input);
     axios
       .get("/search", {
         params: {
@@ -16,7 +19,8 @@ function SearchDetail() {
       })
       .then((res) => {
         console.log(res.data);
-        alert(res.data);
+        setResult(res.data);
+        console.log(result);
       })
       .catch((err) => {
         alert(err);
@@ -25,7 +29,16 @@ function SearchDetail() {
 
   return (
     <div className="search_detail">
-      {Input},{input}
+      <SearchInput />
+      {result.length == 0 ? (
+        <div className="search-noPost">게시물이 존재 하지 않습니다.</div>
+      ) : (
+        <div className="search_list">
+          {result.map((item) => {
+            return <ContentBox data={item}></ContentBox>;
+          })}
+        </div>
+      )}
     </div>
   );
 }

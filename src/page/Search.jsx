@@ -19,7 +19,7 @@ function Search() {
           <img
             className="search-submit"
             src={s_logo}
-            onClick={() => navigate(inputT)}
+            onClick={() => navigate(`${inputT}`)}
           ></img>
         </div>
       </div>

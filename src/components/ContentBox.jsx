@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 function ContentBox({ data }) {
   const navigate = useNavigate();
   const onClickHandler = () => {
-    navigate(`${data.id}`);
+    navigate(`/home/${data.page}/${data.board_id}/${data.id}`);
   };
   return (
     <div className="Post" onClick={onClickHandler}>

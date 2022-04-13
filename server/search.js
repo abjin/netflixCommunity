@@ -5,15 +5,28 @@ const mongo = require("./database/database.js");
 router.get("/", (req, res) => {
   const { input } = req.query;
 
-  mongo.test
-    .findOne({ name: "test" })
+  const Condition = [
+    {
+      $search: {
+        index: "titleSearch",
+        text: {
+          query: input,
+          path: "title",
+        },
+      },
+    },
+  ];
+
+  mongo.post
+    .aggregate(Condition)
+    .toArray()
     .then((result) => {
       console.log(result);
-      res.json(result.content);
+      res.json(result).status(200);
     })
     .catch((err) => {
       console.log(err);
-      res.status(500).json({ message: "db err occur" });
+      res.status(500).json({ message: "mongodb search err ouccer" });
     });
 });
 
