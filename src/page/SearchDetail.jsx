@@ -34,8 +34,8 @@ function SearchDetail() {
         <div className="search-noPost">게시물이 존재 하지 않습니다.</div>
       ) : (
         <div className="search_list">
-          {result.map((item) => {
-            return <ContentBox data={item}></ContentBox>;
+          {result.map((item, idx) => {
+            return <ContentBox key={idx} data={item}></ContentBox>;
           })}
         </div>
       )}
