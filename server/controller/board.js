@@ -1,9 +1,8 @@
 const express = require("express");
-const { post } = require("./database/database");
+const { post } = require("../database/database");
 const router = express.Router();
 
 router.get("", (req, res) => {
-  console.log(req.query.boardId);
   const boardId = req.query.boardId;
   // console.log(boardId);
   post

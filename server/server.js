@@ -1,5 +1,7 @@
 const express = require("express");
 const cors = require("cors");
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 const app = express();
 
 require("dotenv").config();
@@ -12,17 +14,7 @@ app.use(
   })
 );
 
-const home = require("./home.js");
-const user = require("./user.js");
-const post = require("./post.js");
-const board = require("./board.js");
-const search = require("./search.js");
-
-app.use("/main", home);
-app.use("/user", user);
-app.use("/post", post);
-app.use("/board", board);
-app.use("/search", search);
+require("./controller")(app);
 
 app.listen(3001, () => {
   console.log("listening on ", 3001, "port.");

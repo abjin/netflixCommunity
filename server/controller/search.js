@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const mongo = require("./database/database.js");
+const mongo = require("../database/database.js");
 
 router.get("/", (req, res) => {
   const { input } = req.query;

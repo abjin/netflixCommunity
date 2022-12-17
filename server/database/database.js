@@ -9,6 +9,5 @@ const client = new MongoClient(uri, {
 
 const post = client.db("post").collection("post");
 const count = client.db("count").collection("count");
-const test = client.db("test").collection("test");
 
-module.exports = { client, post, count, test };
+module.exports = { client, post, count };

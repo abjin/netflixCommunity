@@ -1,17 +1,12 @@
 const express = require("express");
 const router = express.Router();
-router.use(express.json());
 
-const cookieParser = require("cookie-parser");
-router.use(cookieParser());
+const jwt = require("jsonwebtoken");
 
-const generateAcessToken = require("./auth/jwt.js").generateAcessToken;
-const generateRefreshToken = require("./auth/jwt.js").generateRefreshToken;
-const chToken = require("./auth/jwt.js").chToken;
-const chId = require("./auth/login");
-
-const chSignup = require("./auth/signup").chSignup;
-const sign = require("./auth/signup").sign;
+const { generateAcessToken, generateRefreshToken } = require("../auth/jwt.js");
+const { sign, chSignup } = require("../auth/signup");
+const { chToken } = require("../auth/jwt.js");
+const chId = require("../auth/login");
 
 router.post("/login", (req, res) => {
   const { email, password } = req.body;
