@@ -32,7 +32,7 @@
   "scripts": {
     "start": "npm-run-all -p starts:**",
     "starts:client": "react-scripts start",
-    "starts:server": "nodemon server.js",
+    "starts:server": "nodemon ./server/server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

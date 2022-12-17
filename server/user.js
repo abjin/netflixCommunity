@@ -5,13 +5,13 @@ router.use(express.json());
 const cookieParser = require("cookie-parser");
 router.use(cookieParser());
 
-const generateAcessToken = require("./user/jwt.js").generateAcessToken;
-const generateRefreshToken = require("./user/jwt.js").generateRefreshToken;
-const chToken = require("./user/jwt.js").chToken;
-const chId = require("./user/login");
+const generateAcessToken = require("./auth/jwt.js").generateAcessToken;
+const generateRefreshToken = require("./auth/jwt.js").generateRefreshToken;
+const chToken = require("./auth/jwt.js").chToken;
+const chId = require("./auth/login");
 
-const chSignup = require("./user/signup").chSignup;
-const sign = require("./user/signup").sign;
+const chSignup = require("./auth/signup").chSignup;
+const sign = require("./auth/signup").sign;
 
 router.post("/login", (req, res) => {
   const { email, password } = req.body;
