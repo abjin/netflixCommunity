@@ -14,6 +14,8 @@ app.use(
   })
 );
 
+app.use(bodyParser());
+
 require("./controller")(app);
 
 app.listen(3001, () => {
